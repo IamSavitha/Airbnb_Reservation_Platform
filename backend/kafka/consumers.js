@@ -1,4 +1,4 @@
-const { ownerConsumer, travelerConsumer, TOPICS } = require('../config/kafka');
+const { KAFKA_ENABLED, ownerConsumer, travelerConsumer, TOPICS } = require('../config/kafka');
 const { notifyTraveler, notifyOwner } = require('../config/socket');
 
 // Owner Consumer - Listens for booking requests
@@ -84,6 +84,7 @@ const startTravelerConsumer = async () => {
 
 // Start all consumers
 const startAllConsumers = async () => {
+  if (!KAFKA_ENABLED) return;
   try {
     await Promise.all([
       startOwnerConsumer(),

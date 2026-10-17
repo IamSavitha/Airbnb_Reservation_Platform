@@ -1,6 +1,7 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import './AgentButton.css';
+import { AI_AGENT_URL } from '../config';
 
 const AgentButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +55,7 @@ const AgentButton = () => {
     setError(null);
 
     try {
-      const res = await fetch('http://54.185.125.23:30983/ai-agent/plan', {
+      const res = await fetch(`${AI_AGENT_URL}/ai-agent/plan`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +63,7 @@ const AgentButton = () => {
         body: JSON.stringify({
           query: query,
           bookingContext: {
-            travelerId: travelerId, // ä¼ é€’travelerIdä»¥èŽ·å–åŽ†å²è®°å½•
+            travelerId: travelerId, // lets the agent personalize from booking history
             location: location,
             dates: {
               startDate: startDate,

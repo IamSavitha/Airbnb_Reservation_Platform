@@ -67,7 +67,7 @@ export const removeFavorite = createAsyncThunk(
   'booking/removeFavorite',
   async (propertyId, { rejectWithValue }) => {
     try {
-      const response = await bookingAPI.removeFromFavorites(propertyId);
+      await bookingAPI.removeFromFavorites(propertyId);
       return propertyId;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Failed to remove favorite');

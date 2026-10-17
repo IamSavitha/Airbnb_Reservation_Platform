@@ -12,6 +12,7 @@ const { startAllConsumers } = require('./kafka/consumers');
 // MongoDB connection
 const connectDB = require('./config/mongodb');
 const { initSocket } = require('./config/socket');
+const { allowedOrigins } = require('./config/origins');
 
 const app = express();
 const server = http.createServer(app);
@@ -47,9 +48,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS Configuration - MUST BE BEFORE ROUTES
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://54.185.125.23:31296'], // Frontend URL
+  origin: allowedOrigins, // from CORS_ORIGINS (comma-separated)
   credentials: true, // Allow cookies
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Cookie', 'Authorization']
 }));
 

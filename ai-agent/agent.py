@@ -34,66 +34,19 @@ llm = ChatOpenAI(
 )
 
 
-def get_user_booking_history(traveler_id: int) -> list:
+def get_user_booking_history(traveler_id: str) -> list:
     """
-    Get user's booking history from database using traveler_id
-    
-    Args:
-        traveler_id: The traveler ID to get history for
-        
-    Returns:
-        List of previous bookings for this user
-    """
-    try:
-        import mysql.connector
-        
-        conn = mysql.connector.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
-            port=int(os.getenv('DB_PORT', 3306)),
-            user=os.getenv('DB_USER', 'root'),
-            password=os.getenv('DB_PASSWORD', ''),
-            database=os.getenv('DB_NAME', 'airbnb_db')
-        )
-        
-        cursor = conn.cursor(dictionary=True)
-        
-        # Get user's booking history with property location info
-        cursor.execute("""
-            SELECT 
-                b.id,
-                COALESCE(p.city, p.location) as location,
-                b.start_date as check_in_date,
-                b.end_date as check_out_date,
-                b.guests,
-                b.status,
-                DATEDIFF(b.end_date, b.start_date) as nights,
-                p.type as property_type
-            FROM bookings b
-            JOIN properties p ON b.property_id = p.id
-            WHERE b.traveler_id = %s 
-            AND b.status IN ('ACCEPTED', 'COMPLETED', 'CANCELLED')
-            ORDER BY b.created_at DESC
-            LIMIT 10
-        """, (traveler_id,))
-        
-        history = cursor.fetchall()
-        
-        # Convert dates to strings
-        for booking in history:
-            for key in ['check_in_date', 'check_out_date']:
-                if booking.get(key):
-                    booking[key] = str(booking[key])
-        
-        cursor.close()
-        conn.close()
-        
-        print(f"✓ Found {len(history)} historical bookings for traveler {traveler_id}")
-        return history
-        
-    except Exception as e:
-        print(f"Warning: Failed to get booking history: {e}")
-        return []
+    Get the traveler's recent booking history (MongoDB, shared with the Node backend).
 
+    Args:
+        traveler_id: The traveler's ObjectId string
+
+    Returns:
+        List of previous bookings for this user (newest first, up to 10)
+    """
+    history = database.get_booking_history(traveler_id)
+    print(f"✓ Found {len(history)} historical bookings for traveler {traveler_id}")
+    return history
 
 def format_booking_history(history: list) -> str:
     """Format booking history for AI prompt"""

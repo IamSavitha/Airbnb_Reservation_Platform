@@ -1,8 +1,9 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './OwnerDashboard.css';
+import { API_ORIGIN } from '../../config';
 
 const OwnerDashboard = () => {
   const [stats, setStats] = useState({
@@ -18,6 +19,7 @@ const OwnerDashboard = () => {
 
   useEffect(() => {
     fetchDashboardData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchDashboardData = async () => {
@@ -29,16 +31,16 @@ const OwnerDashboard = () => {
       };
 
       // Fetch properties count
-      const propertiesRes = await axios.get('http://54.185.125.23:30344/api/properties/owner', { headers });
+      const propertiesRes = await axios.get(`${API_ORIGIN}/api/properties/owner`, { headers });
 
       // Fetch all bookings for stats
-      const bookingsRes = await axios.get('http://54.185.125.23:30344/api/bookings/owner', { headers });
+      const bookingsRes = await axios.get(`${API_ORIGIN}/api/bookings/owner`, { headers });
 
       // Fetch previous bookings (completed)
-      const previousRes = await axios.get('http://54.185.125.23:30344/api/bookings/owner/previous', { headers });
+      const previousRes = await axios.get(`${API_ORIGIN}/api/bookings/owner/previous`, { headers });
 
       // Fetch recent requests (pending)
-      const requestsRes = await axios.get('http://54.185.125.23:30344/api/bookings/owner/recent-requests', { headers });
+      const requestsRes = await axios.get(`${API_ORIGIN}/api/bookings/owner/recent-requests`, { headers });
 
       const bookings = bookingsRes.data.bookings || [];
       const activeBookings = bookings.filter(b => b.status === 'ACCEPTED').length;

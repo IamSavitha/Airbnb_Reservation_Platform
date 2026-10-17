@@ -1,5 +1,10 @@
 const { Kafka } = require('kafkajs');
 
+// Set KAFKA_ENABLED=false to run without a broker (e.g. a single-container demo):
+// booking events are then delivered straight to the WebSocket layer with the same
+// payloads the Kafka consumers would send.
+const KAFKA_ENABLED = process.env.KAFKA_ENABLED !== 'false';
+
 // Kafka configuration
 const kafka = new Kafka({
   clientId: 'airbnb-app',
@@ -25,6 +30,11 @@ const travelerConsumer = kafka.consumer({ groupId: 'traveler-service' });
 
 // Producer helper functions
 const sendBookingRequest = async (bookingData) => {
+  if (!KAFKA_ENABLED) {
+    const { notifyOwner } = require('./socket');
+    if (bookingData.ownerId) notifyOwner(bookingData.ownerId, { type: 'NEW_BOOKING_REQUEST', booking: bookingData });
+    return true;
+  }
   try {
     await producer.send({
       topic: TOPICS.BOOKING_REQUEST,
@@ -47,6 +57,18 @@ const sendBookingRequest = async (bookingData) => {
 };
 
 const sendBookingStatusUpdate = async (bookingData) => {
+  if (!KAFKA_ENABLED) {
+    const { notifyTraveler } = require('./socket');
+    if (bookingData.travelerId) {
+      notifyTraveler(bookingData.travelerId, {
+        type: 'BOOKING_STATUS_UPDATE',
+        bookingId: bookingData.id,
+        status: bookingData.status,
+        booking: bookingData
+      });
+    }
+    return true;
+  }
   try {
     await producer.send({
       topic: TOPICS.BOOKING_STATUS_UPDATE,
@@ -71,6 +93,10 @@ const sendBookingStatusUpdate = async (bookingData) => {
 
 // Initialize producer
 const initProducer = async () => {
+  if (!KAFKA_ENABLED) {
+    console.log('ℹ️  Kafka disabled (KAFKA_ENABLED=false): booking events go directly to WebSockets');
+    return;
+  }
   try {
     await producer.connect();
     console.log('✅ Kafka producer connected');
@@ -82,6 +108,7 @@ const initProducer = async () => {
 
 // Initialize consumers
 const initConsumers = async () => {
+  if (!KAFKA_ENABLED) return;
   try {
     await ownerConsumer.connect();
     await travelerConsumer.connect();
@@ -94,6 +121,7 @@ const initConsumers = async () => {
 
 // Graceful shutdown
 const disconnectKafka = async () => {
+  if (!KAFKA_ENABLED) return;
   try {
     await producer.disconnect();
     await ownerConsumer.disconnect();
@@ -105,6 +133,7 @@ const disconnectKafka = async () => {
 };
 
 module.exports = {
+  KAFKA_ENABLED,
   kafka,
   producer,
   ownerConsumer,

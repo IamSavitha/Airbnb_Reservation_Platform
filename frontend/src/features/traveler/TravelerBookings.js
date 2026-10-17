@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchBookings, cancelBooking } from '../../features/booking/bookingSlice';
-import { connectSocket, disconnectSocket, onBookingStatusUpdate, offBookingStatusUpdate } from '../../services/socket';
+import { connectSocket } from '../../services/socket';
 
 function TravelerBookings() {
   const navigate = useNavigate();

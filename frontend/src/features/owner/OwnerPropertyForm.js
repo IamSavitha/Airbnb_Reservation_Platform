@@ -72,6 +72,7 @@ function OwnerPropertyForm() {
     if (isEdit) {
       fetchProperty();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [propertyId, isEdit]);
 
   const fetchProperty = async () => {

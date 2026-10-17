@@ -129,6 +129,9 @@
       DB_NAME: ${DB_NAME:-airbnb_db}
       MONGO_URL: mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-mongopassword}@mongodb:27017/${MONGO_DB:-airbnb_sessions}?authSource=admin
       KAFKA_BROKER: kafka:9093
+      KAFKA_ENABLED: ${KAFKA_ENABLED:-true}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
       SESSION_SECRET: ${SESSION_SECRET:-your-secret-key-change-in-production}
     networks:
       - airbnb-network
@@ -147,16 +150,13 @@
     container_name: airbnb-ai-agent
     restart: unless-stopped
     depends_on:
-      mysql:
+      mongodb:
         condition: service_healthy
     ports:
       - "8000:8000"
     environment:
       PORT: 8000
-      DB_HOST: mysql
-      DB_USER: ${DB_USER:-airbnb_user}
-      DB_PASSWORD: ${DB_PASSWORD:-password123}
-      DB_NAME: ${DB_NAME:-airbnb_db}
+      MONGO_URL: mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-mongopassword}@mongodb:27017/${MONGO_DB:-airbnb_sessions}?authSource=admin
       OPENAI_API_KEY: ${OPENAI_API_KEY:-sk-placeholder}
       TAVILY_API_KEY: ${TAVILY_API_KEY:-tvly-placeholder}
     networks:
@@ -173,6 +173,9 @@
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: ${REACT_APP_API_URL:-http://localhost:4000/api}
+        REACT_APP_AI_AGENT_URL: ${REACT_APP_AI_AGENT_URL:-http://localhost:8000}
     container_name: airbnb-frontend
     restart: unless-stopped
     depends_on:

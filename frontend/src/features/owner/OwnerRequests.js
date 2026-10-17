@@ -1,8 +1,9 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './OwnerRequests.css';
 import { connectSocket } from '../../services/socket';
+import { API_ORIGIN } from '../../config';
 
 const OwnerRequests = () => {
   const [bookings, setBookings] = useState([]);
@@ -19,6 +20,7 @@ const OwnerRequests = () => {
 
   useEffect(() => {
     fetchRequests();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pagination.page]);
 
   // WebSocket connection for real-time updates
@@ -42,13 +44,14 @@ const OwnerRequests = () => {
         };
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ownerInfo]);
 
   const fetchRequests = async () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://54.185.125.23:30344/api/bookings/owner/requests?page=${pagination.page}&limit=${pagination.limit}`,
+        `${API_ORIGIN}/api/bookings/owner/requests?page=${pagination.page}&limit=${pagination.limit}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -77,7 +80,7 @@ const OwnerRequests = () => {
       setActionLoading(prev => ({ ...prev, [bookingId]: 'accepting' }));
 
       const response = await axios.put(
-        `http://54.185.125.23:30344/api/bookings/owner/${bookingId}/accept`,
+        `${API_ORIGIN}/api/bookings/owner/${bookingId}/accept`,
         {},
         {
           headers: {
@@ -116,7 +119,7 @@ const OwnerRequests = () => {
       setActionLoading(prev => ({ ...prev, [bookingId]: 'cancelling' }));
 
       const response = await axios.put(
-        `http://54.185.125.23:30344/api/bookings/owner/${bookingId}/cancel`,
+        `${API_ORIGIN}/api/bookings/owner/${bookingId}/cancel`,
         {},
         {
           headers: {

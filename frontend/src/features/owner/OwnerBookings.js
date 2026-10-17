@@ -1,7 +1,8 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './OwnerBookings.css';
+import { API_ORIGIN } from '../../config';
 
 const OwnerBookings = () => {
   const [activeTab, setActiveTab] = useState('accepted');
@@ -18,6 +19,7 @@ const OwnerBookings = () => {
 
   useEffect(() => {
     fetchBookings();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab, pagination.page]);
 
   const fetchBookings = async () => {
@@ -40,7 +42,7 @@ const OwnerBookings = () => {
       }
 
       const response = await axios.get(
-        `http://54.185.125.23:30344${endpoint}?page=${pagination.page}&limit=${pagination.limit}`,
+        `${API_ORIGIN}${endpoint}?page=${pagination.page}&limit=${pagination.limit}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
