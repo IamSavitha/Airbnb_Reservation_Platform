@@ -6,3 +6,12 @@ ai-agent/.env
 frontend/.env
 
 .DS_Store
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+cookies.txt
+*_cookies.txt
+*.patch
