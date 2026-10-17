@@ -9,11 +9,11 @@
 
 1. [Executive Summary](#executive-summary)
 2. [Architecture Overview](#architecture-overview)
-3. [Part 1: Docker & Kubernetes](#part-1-docker--kubernetes-15-points)
-4. [Part 2: Kafka Integration](#part-2-kafka-integration-10-points)
-5. [Part 3: MongoDB Integration (5 points)](#part-3-mongodb-integration-5-points)
-6. [Part 4: Redux Implementation (5 points)](#part-4-redux-implementation-5-points)
-7. [Part 5: JMeter Performance Testing (5 points)](#part-5-jmeter-performance-testing-5-points)
+3. [Docker & Kubernetes](#docker--kubernetes)
+4. [Kafka Integration](#kafka-integration)
+5. [MongoDB Integration](#mongodb-integration)
+6. [Redux Implementation](#redux-implementation)
+7. [JMeter Performance Testing](#jmeter-performance-testing)
 8. [Testing & Verification](#testing--verification)
 9. [Challenges & Solutions](#challenges--solutions)
 10. [Conclusion](#conclusion)
@@ -67,7 +67,7 @@ This report documents the v2 cloud-native enhancements to the Airbnb Reservation
 
 ---
 
-## Part 1: Docker & Kubernetes (15 points)
+## Docker & Kubernetes
 
 ### 1.1 Docker Implementation
 
@@ -372,7 +372,7 @@ $ kubectl get hpa -n airbnb
 
 ---
 
-## Part 2: Kafka Integration (10 points)
+## Kafka Integration
 
 ### 2.1 Kafka Architecture
 
@@ -559,7 +559,7 @@ const startTravelerConsumer = async () => {
 
 ---
 
-## Part 3: MongoDB Integration (5 points)
+## MongoDB Integration
 
 ### 3.1 Session Storage Implementation
 
@@ -648,7 +648,7 @@ $ docker exec -it airbnb-mongodb mongosh -u admin -p mongopassword
 
 ---
 
-## Part 4: Redux Implementation (5 points)
+## Redux Implementation
 
 ### 4.1 Redux Store Configuration
 
@@ -785,7 +785,7 @@ function TravelerDashboard() {
 
 ---
 
-## Part 5: JMeter Performance Testing (5 points)
+## JMeter Performance Testing
 
 ### 5.1 Test Plans
 
@@ -1231,34 +1231,33 @@ jmeter -n -t test.jmx -Jusers=500
 
 ### Summary of Achievements
 
-This lab successfully implemented all required distributed systems concepts:
+The v2 release delivered the following distributed-systems capabilities:
 
-1. **Docker & Kubernetes (15 points)**:
+1. **Docker & Kubernetes**:
    - Containerized all services with optimized multi-stage builds
    - Deployed on Kubernetes with auto-scaling and health checks
    - Configured persistent storage and resource limits
 
-2. **Kafka Integration (10 points)**:
+2. **Kafka Integration**:
    - Implemented asynchronous messaging for booking workflows
    - Created producer/consumer architecture
    - Achieved decoupled, event-driven communication
 
-3. **MongoDB Integration (5 points)**:
+3. **MongoDB Integration**:
    - Integrated MongoDB for session storage
    - Implemented encrypted session persistence
    - Verified password encryption with bcrypt
 
-4. **Redux Implementation (5 points)**:
+4. **Redux Implementation**:
    - Comprehensive state management across all features
    - Redux Toolkit for modern Redux patterns
    - Redux Persist for state persistence
 
-5. **JMeter Testing (5 points)**:
+5. **JMeter Testing**:
    - Created 3 comprehensive test plans
    - Tested with 100-500 concurrent users
    - Generated detailed performance reports
 
-**Total: 40/40 points (100%)**
 
 ### Key Learnings
 
@@ -1321,7 +1320,7 @@ This lab successfully implemented all required distributed systems concepts:
 
 ### Conclusion
 
-This lab provided hands-on experience with critical distributed systems technologies. The implementation demonstrates a production-ready architecture with containerization, orchestration, message queuing, and comprehensive testing. The system is scalable, resilient, and maintainable, following industry best practices for modern web applications.
+This release provided hands-on experience with critical distributed systems technologies. The implementation demonstrates a production-ready architecture with containerization, orchestration, message queuing, and comprehensive testing. The system is scalable, resilient, and maintainable, following industry best practices for modern web applications.
 
 ---
 
@@ -1518,86 +1517,9 @@ jmeter -n -t test-plans/01-authentication-test.jmx -l results/auth.jtl -e -o res
 - PUT `/api/booking/:id/cancel-owner` - Cancel booking (owner)
 - PUT `/api/booking/:id/cancel` - Cancel booking (traveler)
 
-### E. Screenshot Checklist
-
-This report requires the following screenshots to be added:
-
-**Architecture & Infrastructure**:
-- [ ] System architecture diagram
-- [ ] Docker Compose services running
-- [ ] Kubernetes cluster overview
-- [ ] Kubernetes pods running
-- [ ] Kubernetes services list
-- [ ] Kubernetes HPA status
-- [ ] Kubernetes PVC status
-
-**Kafka**:
-- [ ] Kafka UI dashboard
-- [ ] Kafka topics list
-- [ ] Kafka messages
-- [ ] Producer logs
-- [ ] Consumer logs
-- [ ] Booking request flow (3 screenshots)
-- [ ] Status update flow (3 screenshots)
-
-**MongoDB**:
-- [ ] MongoDB connection
-- [ ] Sessions collection
-- [ ] Session document
-- [ ] Password encryption in DB
-
-**Redux**:
-- [ ] Redux DevTools overview
-- [ ] Redux actions log
-- [ ] Redux state inspection
-- [ ] Redux time-travel debugging
-- [ ] Redux Persist localStorage
-- [ ] Traveler slice code
-- [ ] Owner slice code
-- [ ] Property slice code
-- [ ] Booking slice code
-
-**JMeter**:
-- [ ] Authentication test plan
-- [ ] Property search test plan
-- [ ] Booking test plan
-- [ ] Test execution console
-- [ ] 100 users results (3 tests)
-- [ ] 200 users results
-- [ ] 300 users results
-- [ ] 400 users results
-- [ ] 500 users results
-- [ ] Response time graph
-- [ ] Throughput graph
-- [ ] Error rate graph
-- [ ] Response time distribution
-- [ ] Auth HTML report
-- [ ] Property HTML report
-- [ ] Booking HTML report
-- [ ] CPU usage graph
-- [ ] Memory usage graph
-- [ ] Database metrics
-- [ ] Kafka metrics
-
-**Testing**:
-- [ ] User registration
-- [ ] User login
-- [ ] Property search
-- [ ] Property details
-- [ ] Create booking
-- [ ] Booking confirmation
-- [ ] Kafka booking event
-- [ ] Owner notification
-- [ ] Owner accepts
-- [ ] Kafka status event
-- [ ] Traveler sees update
-- [ ] MySQL tables
-- [ ] MySQL sample data
-
-**Total Screenshots Required**: ~70+
 
 ---
 
 **Authors**: Savitha and Jane
 **Date**: November 20, 2025
-**Status**: Complete - 40/40 Points
+**Status**: Complete
