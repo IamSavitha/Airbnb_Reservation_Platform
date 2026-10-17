@@ -17,7 +17,8 @@ export const connectSocket = (userId, userType) => {
   if (socket && currentKey === key) return socket;
 
   disconnectSocket();
-  socket = io(SOCKET_URL, {
+  // An empty SOCKET_URL means the API is served from this same origin.
+  socket = io(SOCKET_URL || undefined, {
     auth: { token },
     transports: ['websocket', 'polling'],
     withCredentials: true,

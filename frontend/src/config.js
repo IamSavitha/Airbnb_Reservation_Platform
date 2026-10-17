@@ -5,7 +5,8 @@ export const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4
 // Socket.IO lives on the API host without the /api suffix.
 export const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || API_BASE_URL.replace(/\/api\/?$/, '');
 
-export const AI_AGENT_URL = process.env.REACT_APP_AI_AGENT_URL || 'http://localhost:8000';
+// Set REACT_APP_AI_AGENT_URL to an empty string to hide the AI travel-agent button (e.g. demos without an LLM key).
+export const AI_AGENT_URL = process.env.REACT_APP_AI_AGENT_URL ?? 'http://localhost:8000';
 
 // Origin of the API (no /api suffix), for code that builds full paths itself.
 export const API_ORIGIN = API_BASE_URL.replace(/\/api\/?$/, '');

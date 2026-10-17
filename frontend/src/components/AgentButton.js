@@ -93,6 +93,9 @@ const AgentButton = () => {
     }
   };
 
+  // Hidden when no AI agent service is configured (REACT_APP_AI_AGENT_URL="").
+  if (!AI_AGENT_URL) return null;
+
   return (
     <>
       {!isOpen && (

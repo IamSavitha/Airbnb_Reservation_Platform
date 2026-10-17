@@ -76,6 +76,14 @@ app.use(session({
   }
 }));
 
+// Optional: serve the built React app from the same origin (single-container deploys).
+// Set FRONTEND_DIR to the frontend build folder; API routes keep priority.
+const path = require('path');
+const FRONTEND_DIR = process.env.FRONTEND_DIR ? path.resolve(process.env.FRONTEND_DIR) : null;
+if (FRONTEND_DIR) {
+  app.use(express.static(FRONTEND_DIR));
+}
+
 // Root route
 app.get('/', (req, res) => {
   res.json({
@@ -108,6 +116,13 @@ app.use('/api/favorites', favoriteRoutes);
 app.use('/api/owner/properties', ownerPropertyRoutes);
 
 
+
+// Client-side routes fall back to index.html when the frontend is served from here.
+if (FRONTEND_DIR) {
+  app.get(/^\/(?!api\/|api$|health$|socket\.io\/).*/, (req, res) => {
+    res.sendFile(path.join(FRONTEND_DIR, 'index.html'));
+  });
+}
 
 // 404 handler - AFTER all routes
 app.use((req, res) => {
