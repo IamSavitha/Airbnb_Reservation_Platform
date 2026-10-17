@@ -2,6 +2,11 @@
 
 > Full-stack Airbnb-style booking platform with separate traveler and owner experiences, a documented REST API, and an AI travel-concierge agent that turns a booking into a day-by-day itinerary.
 
+| Version | Branch | What's in it |
+|---|---|---|
+| **Lab 1**: full-stack monolith | `main` (this page) | React/Redux, Express + MySQL, FastAPI + LangChain AI agent |
+| **Lab 2**: cloud-native | [`lab2`](https://github.com/IamSavitha/Airbnb_Reservation_Platform/tree/lab2) | + JWT, Kafka event-driven bookings, MongoDB sessions, Docker Compose, Kubernetes with HPA, JMeter |
+
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
 ![Redux](https://img.shields.io/badge/Redux_Toolkit-764ABC?logo=redux&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)
