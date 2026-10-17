@@ -1,4 +1,4 @@
-# Airbnb Prototype - Lab 2 Complete
+# Airbnb Reservation Platform v2: Cloud-Native Overview
 
 ## Quick Start
 
@@ -61,12 +61,8 @@ cd backend && npm start
 1. **[DOCKER_KUBERNETES_SETUP.md](DOCKER_KUBERNETES_SETUP.md)** - Complete Docker & K8s guide
 2. **[KAFKA_SETUP.md](KAFKA_SETUP.md)** - Kafka integration guide
 3. **[JMETER_SETUP.md](JMETER_SETUP.md)** - Performance testing guide
-4. **[LAB2_FINAL_STATUS.md](LAB2_FINAL_STATUS.md)** - Final completion report
 
 ### Additional Documentation
-- **[LAB2_KAFKA_STATUS.md](LAB2_KAFKA_STATUS.md)** - Kafka implementation details
-- **[LAB2_PROGRESS.md](LAB2_PROGRESS.md)** - Development progress
-- **[LAB2_COMPLETION_SUMMARY.md](LAB2_COMPLETION_SUMMARY.md)** - Summary report
 
 ---
 
@@ -243,7 +239,7 @@ jmeter -n -t test-plans/01-authentication-test.jmx \
 ## Project Structure
 
 ```
-Lab1_DistributedSystem/
+Airbnb_Reservation_Platform/
 ├── backend/                    # Node.js Backend
 │   ├── config/
 │   │   ├── kafka.js           #   Kafka configuration
@@ -283,7 +279,6 @@ Lab1_DistributedSystem/
     ├── DOCKER_KUBERNETES_SETUP.md
     ├── KAFKA_SETUP.md
     ├── JMETER_SETUP.md
-    └── LAB2_FINAL_STATUS.md
 ```
 
 ---

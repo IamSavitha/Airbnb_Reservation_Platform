@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project implements Kafka for asynchronous message handling in the booking flow, following the Lab 2 requirements.
+This project implements Kafka for asynchronous message handling in the booking flow.
 
 ## Architecture
 

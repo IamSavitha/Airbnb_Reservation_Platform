@@ -1,8 +1,8 @@
-# Airbnb Reservation Platform: Lab 2 (Cloud-Native)
+# Airbnb Reservation Platform · v2 Cloud-Native Edition
 
-> The Lab 2 version of the Airbnb-style booking platform, rebuilt for distributed deployment: JWT auth, event-driven booking flow over Kafka, MongoDB-backed sessions, Docker Compose and Kubernetes manifests with autoscaling, and JMeter load-test plans.
+> The cloud-native edition of the Airbnb-style booking platform, rebuilt for distributed deployment: JWT auth, event-driven booking flow over Kafka, MongoDB-backed sessions, Docker Compose and Kubernetes manifests with autoscaling, and JMeter load-test plans.
 >
-> 🔀 You are on the **`lab2`** branch. The Lab 1 monolith (Express + MySQL + AI agent) is on [`main`](https://github.com/IamSavitha/Airbnb_Reservation_Platform/tree/main).
+> 🔀 You are on the **`v2-cloud-native`** branch. The **v1 Full-Stack Edition** (Express + MySQL + AI agent) is on [`main`](https://github.com/IamSavitha/Airbnb_Reservation_Platform/tree/main).
 
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
 ![Redux](https://img.shields.io/badge/Redux_Toolkit-764ABC?logo=redux&logoColor=white)
@@ -14,9 +14,9 @@
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?logo=kubernetes&logoColor=white)
 ![JMeter](https://img.shields.io/badge/Apache%20JMeter-D22128?logo=apachejmeter&logoColor=white)
 
-## What changed from Lab 1
+## What changed from v1
 
-| Area | Lab 1 (`main`) | Lab 2 (`lab2`) |
+| Area | v1 Full-Stack (`main`) | v2 Cloud-Native (`v2-cloud-native`) |
 |---|---|---|
 | Auth | Cookie sessions in memory | **JWT** (Bearer tokens on all 6 route modules) + sessions persisted in **MongoDB** (`connect-mongo`) |
 | Booking flow | Synchronous REST | **Event-driven**: a KafkaJS producer publishes to `booking-request` and `booking-status-update`; owner and traveler consumers react asynchronously |
@@ -69,7 +69,7 @@ Kafka UI (`:8080`) shows topics and messages live.
 **Docker Compose**
 
 ```bash
-git clone -b lab2 https://github.com/IamSavitha/Airbnb_Reservation_Platform.git
+git clone -b v2-cloud-native https://github.com/IamSavitha/Airbnb_Reservation_Platform.git
 cd Airbnb_Reservation_Platform
 cp backend/.env.example backend/.env          # set DB and session values
 docker-compose up -d
@@ -113,11 +113,11 @@ ai-agent/     FastAPI + LangChain travel planner, Dockerfile
 k8s/          00-namespace … 07-mongodb-deployment (HPA in 05/06)
 jmeter/       test plans + runner
 database/     schemas + migrations
-docs/         Lab 2 report, setup guides (Docker/K8s, Kafka, JWT, JMeter)
+docs/         architecture report, setup guides (Docker/K8s, Kafka, JWT, JMeter)
 ```
 
-Detailed guides: [Lab 2 overview](docs/README_LAB2.md) · [Docker & Kubernetes](docs/DOCKER_KUBERNETES_SETUP.md) · [Kafka](docs/KAFKA_SETUP.md) · [JWT](docs/JWT_IMPLEMENTATION.md) · [JMeter](docs/JMETER_SETUP.md) · [Report](docs/LAB2_REPORT.md)
+Detailed guides: [Overview](docs/OVERVIEW.md) · [Docker & Kubernetes](docs/DOCKER_KUBERNETES_SETUP.md) · [Kafka](docs/KAFKA_SETUP.md) · [JWT](docs/JWT_IMPLEMENTATION.md) · [JMeter](docs/JMETER_SETUP.md) · [Architecture report](docs/ARCHITECTURE_REPORT.md)
 
 ## My role
 
-<!-- TODO: your contributions (group project with Jane Heng) -->
+<!-- TODO: your contributions (team project with Jane Heng) -->

@@ -2,7 +2,7 @@
 
 **Authors**: Savitha and Jane
 **Date**: November 21, 2025
-**Lab**: Lab 2 - JWT Authentication Enhancement
+**Feature**: JWT authentication
 
 ---
 
@@ -841,4 +841,4 @@ app.use(cors({
 
 **Authors**: Savitha and Jane
 **Date**: November 21, 2025
-**Status**: JWT implementation complete and ready for Lab 2 submission
+**Status**: JWT implementation complete

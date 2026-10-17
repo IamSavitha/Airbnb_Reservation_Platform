@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the JMeter performance testing setup for the Airbnb prototype application, as required for Lab 2 Part 5.
+This document describes the JMeter performance testing setup for the Airbnb prototype application.
 
 ## Test Scope
 
@@ -391,7 +391,7 @@ Import into Excel or Google Sheets for custom analysis.
 - Validate test plan configuration
 - Ensure proper permissions
 
-## Lab 2 Requirements Checklist
+## Implementation Checklist
 
 - ✅ Test user authentication API
 - ✅ Test property data fetching API

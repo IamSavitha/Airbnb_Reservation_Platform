@@ -1,9 +1,7 @@
-# Lab 2 - Distributed Systems Implementation Report
+# Airbnb Reservation Platform v2: Architecture & Implementation Report
 
-**Course**: Data 236 - Distributed Systems
 **Authors**: Savitha and Jane
 **Date**: November 20, 2025
-**Lab**: Lab 2 - Airbnb Prototype Enhancement
 
 ---
 
@@ -24,7 +22,7 @@
 
 ## Executive Summary
 
-This report documents the implementation of Lab 2 enhancements to the Airbnb prototype application. The lab focused on implementing distributed systems concepts including containerization, orchestration, message queuing, database integration, state management, and performance testing.
+This report documents the v2 cloud-native enhancements to the Airbnb Reservation Platform. The release focused on implementing distributed systems concepts including containerization, orchestration, message queuing, database integration, state management, and performance testing.
 
 ### Key Achievements
 
@@ -600,7 +598,7 @@ app.use(session({
 
 ### 3.2 Password Encryption
 
-**bcrypt Implementation** (already implemented in Lab 1):
+**bcrypt Implementation** (already implemented in v1):
 ```javascript
 const bcrypt = require('bcryptjs');
 
@@ -1332,7 +1330,7 @@ This lab provided hands-on experience with critical distributed systems technolo
 ### A. File Structure
 
 ```
-Lab1_DistributedSystem/
+Airbnb_Reservation_Platform/
 ├── backend/
 │   ├── config/
 │   │   └── kafka.js
@@ -1382,11 +1380,7 @@ Lab1_DistributedSystem/
 ├── DOCKER_KUBERNETES_SETUP.md
 ├── KAFKA_SETUP.md
 ├── JMETER_SETUP.md
-├── LAB2_PROGRESS.md
-├── LAB2_COMPLETION_SUMMARY.md
-├── LAB2_FINAL_STATUS.md
-├── LAB2_KAFKA_STATUS.md
-└── README_LAB2.md
+└── OVERVIEW.md
 ```
 
 ### B. Environment Variables
@@ -1605,7 +1599,5 @@ This report requires the following screenshots to be added:
 ---
 
 **Authors**: Savitha and Jane
-**Course**: Data 236 - Distributed Systems
 **Date**: November 20, 2025
-**Lab**: Lab 2 - Airbnb Prototype Enhancement
 **Status**: Complete - 40/40 Points

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide covers the Docker and Kubernetes setup for the Airbnb prototype application, as required for Lab 2.
+This guide covers the Docker and Kubernetes setup for the Airbnb prototype application.
 
 ## Architecture
 
@@ -445,7 +445,7 @@ kubectl port-forward service/frontend-service 3000:80 -n airbnb &
 curl http://localhost:3000
 ```
 
-## Lab 2 Requirements Checklist
+## Implementation Checklist
 
 - ✅ Dockerized Traveler service (Backend API)
 - ✅ Dockerized Owner service (Backend API)
@@ -476,4 +476,4 @@ curl http://localhost:3000
 ---
 
 **Authors**: Savitha and Jane
-**Status**: Docker and Kubernetes setup is complete and ready for Lab 2 submission! 
+**Status**: Docker and Kubernetes setup is complete and ready to deploy. 
