@@ -1,6 +1,6 @@
-# Airbnb Lab 1 Backend (Node.js + Express + MySQL)
+# Airbnb Reservation Platform: Backend API (Node.js + Express + MySQL)
 
-This backend implements the **Lab 1 Distributed Systems** project — a simplified Airbnb clone built using **Node.js**, **Express**, and **MySQL**.  
+This backend powers the **Airbnb Reservation Platform**, an Airbnb-style booking service built using **Node.js**, **Express**, and **MySQL**.  
 It provides routes and controllers for **Travelers** and **Owners** to manage authentication, properties, favorites, and bookings.
 
 ## Tech Stack

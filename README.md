@@ -1,11 +1,11 @@
-# Airbnb Reservation Platform
+# Airbnb Reservation Platform · v1 Full-Stack Edition
 
 > Full-stack Airbnb-style booking platform with separate traveler and owner experiences, a documented REST API, and an AI travel-concierge agent that turns a booking into a day-by-day itinerary.
 
 | Version | Branch | What's in it |
 |---|---|---|
-| **Lab 1**: full-stack monolith | `main` (this page) | React/Redux, Express + MySQL, FastAPI + LangChain AI agent |
-| **Lab 2**: cloud-native | [`lab2`](https://github.com/IamSavitha/Airbnb_Reservation_Platform/tree/lab2) | + JWT, Kafka event-driven bookings, MongoDB sessions, Docker Compose, Kubernetes with HPA, JMeter |
+| **v1 · Full-Stack Edition** | `main` (this page) | React/Redux, Express + MySQL, FastAPI + LangChain AI agent |
+| **v2 · Cloud-Native Edition** | [`v2-cloud-native`](https://github.com/IamSavitha/Airbnb_Reservation_Platform/tree/v2-cloud-native) | + JWT, Kafka event-driven bookings, MongoDB sessions, Docker Compose, Kubernetes with HPA, JMeter |
 
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
 ![Redux](https://img.shields.io/badge/Redux_Toolkit-764ABC?logo=redux&logoColor=white)
@@ -114,7 +114,7 @@ database/              # schema + migrations
 
 ## My role
 
-<!-- TODO: your contributions (group project with Jane Heng) -->
+<!-- TODO: your contributions (team project with Jane Heng) -->
 
 ## Future work
 
